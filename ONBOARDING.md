@@ -4,7 +4,7 @@
 
 ## What this is
 
-VESSEL is a supplements e-commerce storefront: Next.js 15.5 App Router, strict Apple-aesthetic design system, fully bilingual (EN/FR) UI and product labels, bag/checkout flow, Supabase-backed orders/stock/reviews, and a password-gated admin panel. Repo: `omar-haha/rcca`.
+VESSEL is a supplements e-commerce storefront: Next.js 15.5 App Router, strict Apple-aesthetic design system, fully bilingual (EN/FR) UI and product labels, bag/checkout flow, Supabase-backed orders/stock/reviews, and a password-gated admin panel. Repo: `omar-haha/vessel`.
 
 ### A few things worth knowing before touching product or marketing copy
 

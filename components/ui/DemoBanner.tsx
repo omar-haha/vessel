@@ -21,7 +21,7 @@ export function DemoBanner() {
         <span className="hidden sm:inline opacity-85">{t("demo_banner_long")}</span>
       </span>
       <a
-        href="https://github.com/omar-haha/rcca"
+        href="https://github.com/omar-haha/vessel"
         target="_blank"
         rel="noopener noreferrer"
         className="shrink-0 underline underline-offset-2 hover:opacity-80"
