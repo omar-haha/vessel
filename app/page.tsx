@@ -24,7 +24,7 @@ export default function Home() {
       <CartDrawer onCheckout={() => setCheckoutOpen(true)} />
       <CheckoutModal isOpen={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
 
-      <main className="pt-[44px]">
+      <main className="pt-[76px]">
         {/* Hero: COA Ribbon */}
         <AppleHero
           variant="secondary"

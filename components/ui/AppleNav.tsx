@@ -151,7 +151,7 @@ export function AppleNav() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-[1000] h-[44px] nav-blur transition-colors duration-300"
+        className="fixed top-8 left-0 right-0 z-[1000] h-[44px] nav-blur transition-colors duration-300"
         style={{ backgroundColor: "var(--nav-bg)", borderBottom: "1px solid var(--border)" }}
       >
         <div className="w-full h-full px-5 md:px-8 flex items-center justify-between">
@@ -221,7 +221,7 @@ export function AppleNav() {
 
       {/* Mobile dropdown */}
       <div
-        className="fixed top-[44px] left-0 right-0 z-[999] md:hidden overflow-hidden transition-all duration-300"
+        className="fixed top-[76px] left-0 right-0 z-[999] md:hidden overflow-hidden transition-all duration-300"
         style={{
           backgroundColor: "var(--bg)",
           borderBottom: mobileOpen ? "1px solid var(--border)" : "none",

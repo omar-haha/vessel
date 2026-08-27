@@ -8,6 +8,11 @@ export const translations = {
     nav_faq:      "FAQ",
     nav_contact:  "Contact",
 
+    // Demo banner
+    demo_banner_short: "Portfolio demo — not a real store.",
+    demo_banner_long:  "No real orders are placed and no real payments are processed.",
+    demo_banner_link:  "View source",
+
     // Hero
     hero_headline:    "Thoughtfully Made.",
     hero_sub:         "Third-party lab tested for potency and purity, batch after batch. Considered formulas for every goal.",
@@ -271,6 +276,11 @@ export const translations = {
     nav_reviews:  "Avis",
     nav_faq:      "FAQ",
     nav_contact:  "Contact",
+
+    // Demo banner
+    demo_banner_short: "Démo de portfolio — pas une vraie boutique.",
+    demo_banner_long:  "Aucune commande réelle n'est passée et aucun paiement réel n'est traité.",
+    demo_banner_link:  "Voir le code source",
 
     // Hero
     hero_headline:    "Conçu avec Soin.",

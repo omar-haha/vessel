@@ -15,7 +15,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <CartToast />
       <CartDrawer onCheckout={() => setCheckoutOpen(true)} />
       <CheckoutModal isOpen={checkoutOpen} onClose={() => setCheckoutOpen(false)} />
-      <main className="pt-[44px]">{children}</main>
+      <main className="pt-[76px]">{children}</main>
       <AppleFooter />
     </>
   );

@@ -153,7 +153,7 @@ export function ProductDetail({ product: initial }: { product: Product }) {
         )}
       </AnimatePresence>
 
-      <main className="pt-[44px] min-h-screen bg-primary">
+      <main className="pt-[76px] min-h-screen bg-primary">
         <div className="max-w-[1100px] mx-auto px-4 md:px-8 py-10 md:py-16">
 
           <Link

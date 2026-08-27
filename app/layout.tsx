@@ -7,6 +7,7 @@ import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvide
 import { PageTransitionProvider } from '@/components/providers/PageTransitionProvider'
 import { LanguageProvider } from '@/components/providers/LanguageProvider'
 import { Analytics } from '@/components/Analytics'
+import { DemoBanner } from '@/components/ui/DemoBanner'
 
 const inter = Inter({ subsets: ['latin'] })
 const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' })
@@ -72,7 +73,8 @@ export default function RootLayout({
       <body className={`${inter.className} ${orbitron.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <LanguageProvider>
-            {/* Inside LanguageProvider — the consent banner is localised. */}
+            {/* Inside LanguageProvider — both banners are localised. */}
+            <DemoBanner />
             <Analytics />
             <CartProvider>
               <SmoothScrollProvider>
