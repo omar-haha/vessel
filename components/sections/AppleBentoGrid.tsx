@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import type { ProductFamily, BenefitTag, Product } from "@/lib/products";
-import type { TranslationKey } from "@/lib/i18n";
+import { TAG_META } from "@/config/catalog";
 
 function stockStatus(qty: number): Product["stock"] {
   if (qty === 0) return "out";
@@ -29,27 +29,8 @@ function applyStock(families: ProductFamily[], stockMap: Record<string, number>)
   });
 }
 
-const TAG_KEY: Record<BenefitTag, TranslationKey> = {
-  'Protein':  'tag_protein',
-  'Energy':   'tag_energy',
-  'Sleep':    'tag_sleep',
-  'Recovery': 'tag_recovery',
-  'Cognitive':'tag_cognitive',
-  'Immunity': 'tag_immunity',
-  'Wellness': 'tag_wellness',
-  'Ancillary':'tag_ancillary',
-};
-
-const TAG_STYLES: Record<BenefitTag, { bg: string; color: string }> = {
-  'Protein':  { bg: 'rgba(59,130,246,0.12)',  color: '#3b82f6' },
-  'Energy':   { bg: 'rgba(34,197,94,0.12)',   color: '#16a34a' },
-  'Sleep':    { bg: 'rgba(251,146,60,0.12)',  color: '#ea580c' },
-  'Recovery': { bg: 'rgba(168,85,247,0.12)',  color: '#9333ea' },
-  'Cognitive':{ bg: 'rgba(6,182,212,0.12)',   color: '#0891b2' },
-  'Immunity': { bg: 'rgba(245,158,11,0.12)',  color: '#d97706' },
-  'Wellness': { bg: 'rgba(239,68,68,0.12)',   color: '#dc2626' },
-  'Ancillary':{ bg: 'rgba(107,114,128,0.12)', color: '#6b7280' },
-};
+// Tag labels and colors now live in config/catalog.ts (TAG_META) — this used
+// to duplicate them here (TAG_STYLES) and again as tag_* keys in lib/i18n.ts.
 
 // Disabled — fabricated social proof. These hashed the product name into a fake
 // star rating and review count shown on every card, which is a deceptive-
@@ -73,7 +54,7 @@ type FilterKey = "all" | BenefitTag;
 // text + ring rather than a solid fill: several tag colours (amber, green, cyan)
 // only reach ~3.2–3.6:1 against white, which would fail AA for 14px label text.
 function filterColor(key: FilterKey): string {
-  return key === "all" ? "var(--accent)" : TAG_STYLES[key].color;
+  return key === "all" ? "var(--accent)" : TAG_META[key].color;
 }
 
 const containerVariants = {
@@ -101,7 +82,8 @@ function getFiltered(key: FilterKey): ProductFamily[] {
 }
 
 export function AppleBentoGrid() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const tagLabel = (tag: BenefitTag) => (lang === "fr" ? TAG_META[tag].labelFr : TAG_META[tag].labelEn);
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
   const [stockMap, setStockMap] = useState<Record<string, number>>({});
 
@@ -113,15 +95,8 @@ export function AppleBentoGrid() {
   }, []);
 
   const FILTERS: { key: FilterKey; label: string }[] = [
-    { key: "all",       label: t("filter_all") },
-    { key: "Protein",   label: t("tag_protein") },
-    { key: "Energy",    label: t("tag_energy") },
-    { key: "Sleep",     label: t("tag_sleep") },
-    { key: "Recovery",  label: t("tag_recovery") },
-    { key: "Cognitive", label: t("tag_cognitive") },
-    { key: "Immunity",  label: t("tag_immunity") },
-    { key: "Wellness",  label: t("tag_wellness") },
-    { key: "Ancillary", label: t("tag_ancillary") },
+    { key: "all", label: t("filter_all") },
+    ...(Object.keys(TAG_META) as BenefitTag[]).map((tag) => ({ key: tag as FilterKey, label: tagLabel(tag) })),
   ];
   const [pickerFamily, setPickerFamily] = useState<ProductFamily | null>(null);
   const [revealed, setRevealed] = useState(true);
@@ -233,9 +208,9 @@ export function AppleBentoGrid() {
                       <div className="flex items-center gap-2 mb-2.5">
                         <span
                           className="rounded-full px-3 py-0.5 text-[11px] font-semibold tracking-wide"
-                          style={{ backgroundColor: TAG_STYLES[family.tag].bg, color: TAG_STYLES[family.tag].color }}
+                          style={{ backgroundColor: TAG_META[family.tag].bg, color: TAG_META[family.tag].color }}
                         >
-                          {t(TAG_KEY[family.tag])}
+                          {tagLabel(family.tag)}
                         </span>
                         {anyLow && (
                           <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-wide" style={{ backgroundColor: "rgba(245,158,11,0.12)", color: "#d97706" }}>

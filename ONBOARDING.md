@@ -150,6 +150,16 @@ border-primary → var(--border)
 ## File map
 
 ```
+config/
+  brand.ts                 Brand identity: name, tagline, domain, support/admin/payment emails,
+                            meta description/keywords. Everything else imports from here rather
+                            than hardcoding a brand value — see the header comment for why
+                            (this repo cherry-picks structural fixes from a sibling repo with a
+                            different brand, and a hardcoded value is exactly what conflicts).
+  catalog.ts                Product catalog + BenefitTag/TAG_META (tag labels + colors, both
+                            languages). lib/products.ts imports `products` from here and never
+                            hardcodes catalog content itself — see that file's own header.
+
 app/
   layout.tsx               Root layout — fonts, providers, anti-flash script, Organization JSON-LD, <Analytics/>
   page.tsx                 Homepage: Nav, CartToast, CartDrawer, CheckoutModal, AppleHero, AppleBentoGrid, HomepageReviews, Footer
@@ -245,7 +255,7 @@ Longer prose — legal copy, FAQ entries, shipping policy — is not in `i18n.ts
 
 ## Products
 
-Defined in [lib/products.ts](lib/products.ts):
+Catalog content lives in [config/catalog.ts](config/catalog.ts); the structural shape and grouping logic (`Product`, `ProductFamily`, `getProductFamilies()`) lives in [lib/products.ts](lib/products.ts), which imports the `products` array from config rather than defining it. To add a product, edit config/catalog.ts, not lib/products.ts.
 
 ```ts
 { id, name, cas, cat: 'core' | 'accessory', tag: BenefitTag,
@@ -255,11 +265,11 @@ Defined in [lib/products.ts](lib/products.ts):
 
 **39 SKUs across 28 product families.** Multi-variant products (e.g. the whey isolate and casein protein SKUs) are separate entries sharing a `name`. Field names are kept from the original codebase this demo was adapted from — `cas` holds a SKU/lot code, `purity` holds a potency/dose description. Renaming them would be a bigger diff than it's worth; the UI labels (`pdp_cas`, `pdp_purity` in i18n.ts) already say "SKU" and "Potency".
 
-- `tag` — one of eight **use-case** values: `Protein`, `Energy`, `Sleep`, `Recovery`, `Cognitive`, `Immunity`, `Wellness`, `Ancillary`.
-- `description` — pulled from the `DESC` map.
+- `tag` — one of eight **use-case** values: `Protein`, `Energy`, `Sleep`, `Recovery`, `Cognitive`, `Immunity`, `Wellness`, `Ancillary`. Each tag's display label (both languages) and badge color live together in `config/catalog.ts`'s `TAG_META` — `AppleBentoGrid.tsx` reads that directly rather than going through `i18n.ts` for these specific strings.
+- `description` — pulled from the `DESC` map (also in config/catalog.ts).
 - `stock: 'out'` cards are greyed out and sorted to the end. Live quantities from `/api/stock` override this field at runtime.
 - `bestSeller: true` — currently 3 SKUs. Note the "Best Sellers" filter pill no longer exists, so this now only affects the PDP badge.
-- To add a product: append an entry — it appears in the grid and gets a statically pre-rendered page automatically.
+- To add a product: append an entry to config/catalog.ts — it appears in the grid and gets a statically pre-rendered page automatically.
 
 ### ProductFamily
 

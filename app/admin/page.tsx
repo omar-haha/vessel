@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { products } from "@/lib/products";
+import { BRAND } from "@/config/brand";
 
 type Order = {
   id: string;
@@ -469,7 +470,7 @@ export default function AdminPage() {
       {/* Header */}
       <div className="sticky top-0 z-10 px-6 py-4 flex items-center justify-between" style={{ backgroundColor: "var(--nav-bg)", borderBottom: "1px solid var(--border)", backdropFilter: "blur(12px)" }}>
         <div className="flex items-center gap-6">
-          <span className="text-[16px] font-semibold text-primary">VESSEL Admin</span>
+          <span className="text-[16px] font-semibold text-primary">{BRAND.name} Admin</span>
           <div className="flex gap-1">
             {(["orders", "stock", "reviews"] as const).map((t) => (
               <button

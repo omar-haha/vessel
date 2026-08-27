@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { BRAND } from "@/config/brand";
 
 export const runtime = "edge";
-export const alt = "VESSEL — Third-Party Tested Supplements";
+export const alt = `${BRAND.name} — ${BRAND.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -22,7 +23,7 @@ export default function OgImage() {
       >
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
           <div style={{ fontSize: 80, fontWeight: 700, color: "#fff", letterSpacing: "-0.04em", lineHeight: 1 }}>
-            VESSEL
+            {BRAND.name}
           </div>
           <div style={{ width: 60, height: 1, backgroundColor: "rgba(255,255,255,0.25)" }} />
           <div
@@ -36,10 +37,10 @@ export default function OgImage() {
               lineHeight: 1.4,
             }}
           >
-            Third-Party Tested Supplements
+            {BRAND.tagline}
           </div>
           <div style={{ fontSize: 15, color: "rgba(255,255,255,0.35)", marginTop: 6, letterSpacing: "0.05em" }}>
-            vesselwellness.example
+            {BRAND.domain}
           </div>
         </div>
       </div>

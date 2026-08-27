@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
 import { checkLimit, limiters } from "@/lib/ratelimit";
+import { BRAND } from "@/config/brand";
 
-const ADMIN_EMAIL  = process.env.ADMIN_EMAIL  ?? "contact@vesselwellness.example";
+const ADMIN_EMAIL  = process.env.ADMIN_EMAIL  ?? BRAND.adminEmail;
 const FROM_ADDRESS = process.env.RESEND_FROM  ?? "onboarding@resend.dev";
 
 function escHtml(s: string): string {
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
       html: `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:520px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)">
     <div style="background:#000;padding:24px 32px">
-      <span style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-.02em">VESSEL</span>
+      <span style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-.02em">${BRAND.name}</span>
       <span style="color:#9ca3af;font-size:13px;margin-left:12px">Contact Form</span>
     </div>
     <div style="padding:32px">

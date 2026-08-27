@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/lib/products";
+import { BRAND } from "@/config/brand";
 
-const BASE = "https://vesselwellness.example";
+const BASE = BRAND.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const productUrls = products.map((p) => ({

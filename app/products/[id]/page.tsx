@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { products } from "@/lib/products";
 import { ProductDetail } from "@/components/sections/ProductDetail";
+import { BRAND } from "@/config/brand";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
   const p = products.find((p) => p.id === id);
   if (!p) return {};
   return {
-    title: `${p.name} — VESSEL`,
+    title: `${p.name} — ${BRAND.name}`,
     description: `${p.name} ${p.unit} · ${p.purity} purity · $${p.price.toFixed(2)}`,
   };
 }
@@ -31,7 +32,7 @@ export default async function Page({ params }: Props) {
     description: product.description ?? `${product.name} ${product.unit}, ${product.purity} purity (supplier-reported).`,
     offers: {
       "@type": "Offer",
-      url: `https://vesselwellness.example/products/${product.id}`,
+      url: `${BRAND.url}/products/${product.id}`,
       priceCurrency: "CAD",
       price: product.price.toFixed(2),
       availability:

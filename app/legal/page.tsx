@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 // Copy lives in lib/legalContent.ts so this page and the footer LegalModal can
 // never drift apart again — they previously declared different governing law.
 import { LEGAL_EN, LEGAL_FR } from "@/lib/legalContent";
+import { BRAND } from "@/config/brand";
 
 type TabId = "disclaimers" | "privacy" | "terms" | "refund";
 
@@ -81,8 +82,8 @@ export default function LegalPage() {
 
         <div className="mt-14 rounded-[16px] p-6 text-[12px] text-secondary leading-relaxed" style={{ backgroundColor: "var(--surface)", border: "1px solid var(--border)" }}>
           {t("page_legal_footer")}{" "}
-          <a href="mailto:support@vesselwellness.example" className="text-[color:var(--accent)] no-underline hover:underline">
-            support@vesselwellness.example
+          <a href={`mailto:${BRAND.supportEmail}`} className="text-[color:var(--accent)] no-underline hover:underline">
+            {BRAND.supportEmail}
           </a>
         </div>
       </div>

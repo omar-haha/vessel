@@ -8,29 +8,32 @@ import { PageTransitionProvider } from '@/components/providers/PageTransitionPro
 import { LanguageProvider } from '@/components/providers/LanguageProvider'
 import { Analytics } from '@/components/Analytics'
 import { DemoBanner } from '@/components/ui/DemoBanner'
+import { BRAND } from '@/config/brand'
 
 const inter = Inter({ subsets: ['latin'] })
 const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' })
 
+const titleFull = `${BRAND.name} | ${BRAND.tagline}`
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vesselwellness.example'),
+  metadataBase: new URL(BRAND.url),
   title: {
-    default: 'VESSEL | Third-Party Tested Supplements',
-    template: '%s | VESSEL',
+    default: titleFull,
+    template: `%s | ${BRAND.name}`,
   },
-  description: 'Protein, performance, and wellness supplements with a Certificate of Analysis for every batch. Shipped Canada-wide in protective packaging.',
-  keywords: ['supplements', 'protein', 'pre-workout', 'vitamins', 'creatine', 'Canada', 'third-party tested', 'nutraceuticals'],
+  description: BRAND.description,
+  keywords: [...BRAND.keywords],
   openGraph: {
-    title: 'VESSEL | Third-Party Tested Supplements',
-    description: 'Protein, performance, and wellness supplements with a Certificate of Analysis for every batch. Shipped Canada-wide in protective packaging.',
+    title: titleFull,
+    description: BRAND.description,
     type: 'website',
     url: '/',
-    siteName: 'VESSEL',
+    siteName: BRAND.name,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VESSEL | Third-Party Tested Supplements',
-    description: 'Protein, performance, and wellness supplements with a Certificate of Analysis for every batch. Shipped Canada-wide in protective packaging.',
+    title: titleFull,
+    description: BRAND.description,
   },
   robots: {
     index: true,
@@ -46,13 +49,13 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "VESSEL",
-    url: "https://vesselwellness.example",
-    logo: "https://vesselwellness.example/icon.svg",
-    email: "support@vesselwellness.example",
+    name: BRAND.name,
+    url: BRAND.url,
+    logo: `${BRAND.url}/icon.svg`,
+    email: BRAND.supportEmail,
     contactPoint: {
       "@type": "ContactPoint",
-      email: "support@vesselwellness.example",
+      email: BRAND.supportEmail,
       contactType: "customer service",
     },
   };

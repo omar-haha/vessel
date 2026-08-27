@@ -6,6 +6,7 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Spinner } from "../ui/Spinner";
+import { BRAND } from "@/config/brand";
 
 const INPUT_CLASS =
   "w-full bg-secondary border border-transparent rounded-[12px] p-4 text-[17px] text-primary placeholder:text-secondary outline-none transition-all focus:border-[color:var(--accent)] focus:bg-primary";
@@ -13,7 +14,7 @@ const INPUT_CLASS =
 type PayMethod = "etransfer" | "crypto";
 type CryptoCoin = "BTC" | "ETH";
 
-const ETRANSFER_EMAIL = "pay@vesselwellness.example";
+const ETRANSFER_EMAIL = BRAND.paymentEmail;
 
 // Portfolio demo — these are the well-known BIP-173 / public example
 // addresses, not real wallets. Replace before accepting real payments.

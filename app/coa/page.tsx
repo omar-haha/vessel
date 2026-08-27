@@ -3,6 +3,7 @@
 import { FlaskConical, FileCheck, Mail, Shield } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { BRAND } from "@/config/brand";
 
 const METHODS = [
   { method: "HPLC",         full_en: "High-Performance Liquid Chromatography", full_fr: "Chromatographie liquide à haute performance", use_en: "Potency & active ingredient verification",  use_fr: "Vérification de la puissance et des ingrédients actifs" },
@@ -79,7 +80,7 @@ export default function CoaPage() {
             <p className="text-[13px] text-secondary leading-relaxed">{t("page_coa_cta_sub")}</p>
           </div>
           <a
-            href="mailto:support@vesselwellness.example?subject=COA Request"
+            href={`mailto:${BRAND.supportEmail}?subject=COA Request`}
             className="shrink-0 rounded-full px-6 py-3 text-[14px] font-medium text-white no-underline btn-physical btn-physical-accent"
             style={{ backgroundColor: "var(--accent)" }}
           >

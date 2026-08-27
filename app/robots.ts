@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { BRAND } from "@/config/brand";
 
-const BASE = "https://vesselwellness.example";
+const BASE = BRAND.url;
 
 export default function robots(): MetadataRoute.Robots {
   return {

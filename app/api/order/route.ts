@@ -3,10 +3,11 @@ import { resend } from "@/lib/resend";
 import { supabase } from "@/lib/supabase";
 import { checkLimit, limiters } from "@/lib/ratelimit";
 import { products } from "@/lib/products";
+import { BRAND } from "@/config/brand";
 
-const ADMIN_EMAIL  = process.env.ADMIN_EMAIL  ?? "contact@vesselwellness.example";
+const ADMIN_EMAIL  = process.env.ADMIN_EMAIL  ?? BRAND.adminEmail;
 const FROM_ADDRESS = process.env.RESEND_FROM  ?? "onboarding@resend.dev";
-const ETRANSFER_EMAIL = "pay@vesselwellness.example";
+const ETRANSFER_EMAIL = BRAND.paymentEmail;
 
 // Portfolio demo — these are the well-known BIP-173 / public example
 // addresses, not real wallets. Replace before accepting real payments.
@@ -87,7 +88,7 @@ function adminEmailHtml(orderId: string, c: Customer, items: Item[], total: numb
   return `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)">
     <div style="background:#000;padding:24px 32px;display:flex;align-items:center;justify-content:space-between">
-      <span style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-.02em">VESSEL</span>
+      <span style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-.02em">${BRAND.name}</span>
       <span style="color:#9ca3af;font-size:13px">New Order</span>
     </div>
     <div style="padding:32px">
@@ -122,7 +123,7 @@ function customerEmailHtml(orderId: string, c: Customer, items: Item[], total: n
   return `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
   <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)">
     <div style="background:#000;padding:24px 32px">
-      <span style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-.02em">VESSEL</span>
+      <span style="color:#fff;font-size:18px;font-weight:700;letter-spacing:-.02em">${BRAND.name}</span>
     </div>
     <div style="padding:32px">
       <h2 style="margin:0 0 8px;font-size:22px;font-weight:700">Order received, ${escHtml(c.firstName)}.</h2>
@@ -143,7 +144,7 @@ function customerEmailHtml(orderId: string, c: Customer, items: Item[], total: n
       <div style="background:#f9fafb;border-radius:10px;padding:16px;margin-bottom:28px">${paymentBlock(payMethod, cryptoCoin, total, orderId)}</div>
 
       <p style="margin:0;font-size:13px;color:#9ca3af;line-height:1.6">
-        Questions? Reply to this email or reach us at <a href="mailto:support@vesselwellness.example" style="color:#000">support@vesselwellness.example</a>.
+        Questions? Reply to this email or reach us at <a href="mailto:${BRAND.supportEmail}" style="color:#000">${BRAND.supportEmail}</a>.
         <br>For research use only.
       </p>
     </div>

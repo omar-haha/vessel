@@ -1,3 +1,5 @@
+import { BRAND } from "@/config/brand";
+
 export type Lang = 'en' | 'fr';
 
 export const translations = {
@@ -53,15 +55,8 @@ export const translations = {
     pdp_about:        "About",
     pdp_related:      "You Might Also Like",
 
-    // Room / use-case tags (see BenefitTag in lib/products.ts)
-    tag_protein:       "Protein",
-    tag_energy:        "Energy",
-    tag_sleep:         "Sleep",
-    tag_recovery:      "Recovery",
-    tag_cognitive:     "Cognitive",
-    tag_immunity:      "Immunity",
-    tag_wellness:      "Wellness",
-    tag_ancillary:     "Ancillary",
+    // Use-case tag labels/colors moved to config/catalog.ts (TAG_META) —
+    // AppleBentoGrid reads them directly instead of through t().
 
     // Quality section
     quality_headline: "Lab Tested. Every Batch.",
@@ -255,7 +250,7 @@ export const translations = {
     page_coa_title:    "Testing & Quality",
     page_coa_sub:      "Every batch we sell is tested by an independent, accredited lab before it ships. We retain these Certificates of Analysis and provide them on request so you know exactly what's in what you're taking.",
     page_coa_steps_title: "How We Test",
-    page_coa_methods_note: "This is how our lab partners verify potency and screen for contaminants, as reported on each Certificate of Analysis. VESSEL does not operate its own lab and does not perform this testing in-house.",
+    page_coa_methods_note: `This is how our lab partners verify potency and screen for contaminants, as reported on each Certificate of Analysis. ${BRAND.name} does not operate its own lab and does not perform this testing in-house.`,
     page_coa_cta_title:   "Request a Certificate of Analysis",
     page_coa_cta_sub:     "Include your order number and the product name. We respond within 1 business day.",
     page_coa_cta_btn:     "Email Support",
@@ -263,11 +258,11 @@ export const translations = {
     page_coa_s1_title: "Batch Manufacturing",
     page_coa_s1_body:  "Each batch is manufactured under cGMP-controlled conditions at a facility in our vetted network. Facilities maintain production records and raw material sourcing for every run.",
     page_coa_s2_title: "Third-Party Lab Testing",
-    page_coa_s2_body:  "An independent, accredited lab tests a sample from every batch for potency, heavy metals, and microbial contaminants before it's cleared to ship. This testing is performed by the lab — VESSEL does not conduct its own in-house testing and does not alter or independently re-verify these results.",
+    page_coa_s2_body:  `An independent, accredited lab tests a sample from every batch for potency, heavy metals, and microbial contaminants before it's cleared to ship. This testing is performed by the lab — ${BRAND.name} does not conduct its own in-house testing and does not alter or independently re-verify these results.`,
     page_coa_s3_title: "Certificate of Analysis Issued",
     page_coa_s3_body:  "The lab issues a Certificate of Analysis for the released batch, stating potency, contaminant screening results, SKU, lot number, and test date. We record it against the batch we receive.",
     page_coa_s4_title: "Available on Request",
-    page_coa_s4_body:  "The Certificate of Analysis is available for every product we sell, passed on as received. Email support@vesselwellness.example with your order number and the product you need documentation for — we'll respond within 1 business day.",
+    page_coa_s4_body:  `The Certificate of Analysis is available for every product we sell, passed on as received. Email ${BRAND.supportEmail} with your order number and the product you need documentation for — we'll respond within 1 business day.`,
   },
 
   fr: {
@@ -322,15 +317,7 @@ export const translations = {
     pdp_about:        "À propos",
     pdp_related:      "Vous aimerez aussi",
 
-    // Room / use-case tags
-    tag_protein:       "Protéines",
-    tag_energy:        "Énergie",
-    tag_sleep:         "Sommeil",
-    tag_recovery:      "Récupération",
-    tag_cognitive:     "Cognitif",
-    tag_immunity:      "Immunité",
-    tag_wellness:      "Bien-être",
-    tag_ancillary:     "Auxiliaire",
+    // Use-case tag labels/colors moved to config/catalog.ts (TAG_META).
 
     // Quality section
     quality_headline: "Testé en Laboratoire. Chaque Lot.",
@@ -522,7 +509,7 @@ export const translations = {
     page_coa_title:    "Tests et qualité",
     page_coa_sub:      "Chaque lot que nous vendons est testé par un laboratoire indépendant accrédité avant l'expédition. Nous conservons ces certificats d'analyse et les fournissons sur demande, afin que vous sachiez exactement ce que contient ce que vous prenez.",
     page_coa_steps_title: "Comment nous testons",
-    page_coa_methods_note: "Voici comment nos laboratoires partenaires vérifient la puissance et dépistent les contaminants, tel que rapporté sur chaque certificat d'analyse. VESSEL n'exploite pas son propre laboratoire et n'effectue pas ces tests à l'interne.",
+    page_coa_methods_note: `Voici comment nos laboratoires partenaires vérifient la puissance et dépistent les contaminants, tel que rapporté sur chaque certificat d'analyse. ${BRAND.name} n'exploite pas son propre laboratoire et n'effectue pas ces tests à l'interne.`,
     page_coa_cta_title:   "Demander un certificat d'analyse",
     page_coa_cta_sub:     "Indiquez votre numéro de commande et le nom du produit. Nous répondons dans un jour ouvrable.",
     page_coa_cta_btn:     "Contacter le support",
@@ -530,11 +517,11 @@ export const translations = {
     page_coa_s1_title: "Fabrication par lot",
     page_coa_s1_body:  "Chaque lot est fabriqué dans des conditions BPF contrôlées par une installation de notre réseau évalué. Les installations conservent les dossiers de production et l'approvisionnement en matières premières pour chaque production.",
     page_coa_s2_title: "Test en laboratoire indépendant",
-    page_coa_s2_body:  "Un laboratoire indépendant accrédité teste un échantillon de chaque lot pour la puissance, les métaux lourds et les contaminants microbiens avant l'expédition. Ce test est réalisé par le laboratoire — VESSEL n'effectue pas ses propres tests à l'interne et ne modifie ni ne vérifie ces résultats de façon indépendante.",
+    page_coa_s2_body:  `Un laboratoire indépendant accrédité teste un échantillon de chaque lot pour la puissance, les métaux lourds et les contaminants microbiens avant l'expédition. Ce test est réalisé par le laboratoire — ${BRAND.name} n'effectue pas ses propres tests à l'interne et ne modifie ni ne vérifie ces résultats de façon indépendante.`,
     page_coa_s3_title: "Certificat d'analyse émis",
     page_coa_s3_body:  "Le laboratoire émet un certificat d'analyse pour le lot libéré, indiquant la puissance, les résultats de dépistage des contaminants, l'UGS, le numéro de lot et la date du test. Nous l'associons au lot que nous recevons.",
     page_coa_s4_title: "Disponible sur demande",
-    page_coa_s4_body:  "Le certificat d'analyse est disponible pour tous nos produits, transmis tel que reçu. Écrivez à support@vesselwellness.example avec votre numéro de commande et le produit concerné — nous répondons dans un jour ouvrable.",
+    page_coa_s4_body:  `Le certificat d'analyse est disponible pour tous nos produits, transmis tel que reçu. Écrivez à ${BRAND.supportEmail} avec votre numéro de commande et le produit concerné — nous répondons dans un jour ouvrable.`,
   },
 } as const;
 

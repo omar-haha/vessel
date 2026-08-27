@@ -5,6 +5,7 @@ import { CheckCircle2, Mail, Clock, MapPin } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { cn } from "@/lib/utils";
+import { BRAND } from "@/config/brand";
 
 const INPUT =
   "w-full bg-secondary border border-transparent rounded-[12px] p-4 text-[15px] text-primary placeholder:text-secondary outline-none transition-all focus:border-[color:var(--accent)] focus:bg-primary";
@@ -16,7 +17,7 @@ export default function ContactPage() {
   const { t } = useLanguage();
 
   const INFO = [
-    { icon: Mail,   label: t("footer_email"),             value: "support@vesselwellness.example", href: "mailto:support@vesselwellness.example" },
+    { icon: Mail,   label: t("footer_email"),             value: BRAND.supportEmail, href: `mailto:${BRAND.supportEmail}` },
     { icon: Clock,  label: t("page_contact_response"),    value: t("page_contact_response_val"), href: null },
     { icon: MapPin, label: t("page_contact_location"),    value: t("page_contact_location_val"), href: null },
   ];
@@ -42,7 +43,7 @@ export default function ContactPage() {
       if (!res.ok) throw new Error("error");
       setSubmitted(true);
     } catch {
-      setSendError("Failed to send. Please email us directly at support@vesselwellness.example.");
+      setSendError(`Failed to send. Please email us directly at ${BRAND.supportEmail}.`);
     } finally {
       setSending(false);
     }

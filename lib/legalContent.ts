@@ -7,18 +7,20 @@
 // ── Entity naming ───────────────────────────────────────────────────────────
 //
 // Every published reference to the business flows from the four constants
-// below so that incorporating (or renaming) is a one-place edit instead of a
-// hunt through every clause in two languages.
+// below (sourced from config/brand.ts) so that incorporating (or renaming) is
+// a one-place edit instead of a hunt through every clause in two languages.
 //
 // NOTE: this is a portfolio/demo project. VESSEL is not a real registered
 // business — these values and the legal copy below are placeholders that
 // demonstrate the pattern, not real legal advice or a binding agreement.
 
-const ENTITY_EN = "VESSEL";
-const LIABLE_PARTY_EN = "VESSEL, including its owner and operators,";
+import { BRAND } from "@/config/brand";
 
-const ENTITY_FR = "VESSEL";
-const LIABLE_PARTY_FR = "VESSEL, y compris son propriétaire et ses exploitants,";
+const ENTITY_EN = BRAND.name;
+const LIABLE_PARTY_EN = `${BRAND.name}, including its owner and operators,`;
+
+const ENTITY_FR = BRAND.name;
+const LIABLE_PARTY_FR = `${BRAND.name}, y compris son propriétaire et ses exploitants,`;
 
 export interface LegalSection {
   heading: string;
@@ -48,8 +50,8 @@ export const LEGAL_EN: LegalContent = {
     { heading: "Data Retention", body: "Order records are retained for a minimum of seven years as required by Canadian tax and business regulations. You may request deletion of your personal data at any time, subject to these legal retention requirements." },
     { heading: "Cookies & Analytics", body: "Essential cookies and local storage required for the site to function (session state, language selection, and your cookie choice) are always active. Analytics are optional: only if you accept them do we load Google Analytics 4, which sets its own cookies (_ga and _ga_*) and transfers aggregate usage data to Google LLC, including to servers outside Canada. Analytics remain switched off until you accept, declining costs you no functionality, and you can withdraw consent at any time by clearing this site's data in your browser. We use no advertising cookies and run no cross-site tracking." },
     { heading: "Security", body: "We implement reasonable technical and organizational measures to protect your personal information. No method of transmission over the internet is 100% secure, and we cannot guarantee absolute security." },
-    { heading: "Your Rights (PIPEDA & Law 25)", body: `Under PIPEDA (Canada) and, for Québec residents, the Act respecting the protection of personal information in the private sector (Law 25), you have the right to access, correct, or request deletion of your personal information held by ${ENTITY_EN}, to withdraw a consent you have given, and to know whether your information has been transferred outside Québec. Contact us at support@vesselwellness.example to exercise these rights.` },
-    { heading: "Contact", body: "Questions regarding this policy may be directed to support@vesselwellness.example. This policy was last updated August 2026 and is subject to change without notice." },
+    { heading: "Your Rights (PIPEDA & Law 25)", body: `Under PIPEDA (Canada) and, for Québec residents, the Act respecting the protection of personal information in the private sector (Law 25), you have the right to access, correct, or request deletion of your personal information held by ${ENTITY_EN}, to withdraw a consent you have given, and to know whether your information has been transferred outside Québec. Contact us at ${BRAND.supportEmail} to exercise these rights.` },
+    { heading: "Contact", body: `Questions regarding this policy may be directed to ${BRAND.supportEmail}. This policy was last updated August 2026 and is subject to change without notice.` },
   ],
   terms: [
     { heading: "Acceptance", body: "By accessing this website or placing an order, you agree to be bound by these Terms of Use and all applicable laws. If you do not agree, do not use this site." },
@@ -64,9 +66,9 @@ export const LEGAL_EN: LegalContent = {
   ],
   refund: [
     { heading: "Return Window", body: "Unused items in original packaging may be returned within 30 days of delivery for a refund or store credit. Made-to-order and final-sale items are excluded — check the product page before ordering." },
-    { heading: "Damaged or Incorrect Orders", body: "If you receive a product that is damaged in transit or materially different from what was ordered, contact us at support@vesselwellness.example within 48 hours of delivery with photos and your order number. We will assess and, at our discretion, offer a replacement or store credit." },
+    { heading: "Damaged or Incorrect Orders", body: `If you receive a product that is damaged in transit or materially different from what was ordered, contact us at ${BRAND.supportEmail} within 48 hours of delivery with photos and your order number. We will assess and, at our discretion, offer a replacement or store credit.` },
     { heading: "Lost Shipments", body: `If tracking confirms a shipment is lost in transit, contact us and we will investigate with the carrier. Replacement or credit is issued at ${ENTITY_EN}'s sole discretion after investigation is complete.` },
-    { heading: "Order Cancellation", body: "Orders may be cancelled within 2 hours of placement if they have not yet been processed. Contact us immediately at support@vesselwellness.example. Once an order is in fulfillment it cannot be cancelled." },
+    { heading: "Order Cancellation", body: `Orders may be cancelled within 2 hours of placement if they have not yet been processed. Contact us immediately at ${BRAND.supportEmail}. Once an order is in fulfillment it cannot be cancelled.` },
   ],
 };
 
@@ -86,8 +88,8 @@ export const LEGAL_FR: LegalContent = {
     { heading: "Conservation des données", body: "Les dossiers de commandes sont conservés pendant au moins sept ans, conformément aux réglementations fiscales et commerciales canadiennes. Vous pouvez demander la suppression de vos données personnelles à tout moment, sous réserve de ces exigences légales de conservation." },
     { heading: "Témoins et statistiques", body: "Les témoins et le stockage local essentiels au fonctionnement du site (état de session, choix de langue et votre choix relatif aux témoins) sont toujours actifs. Les statistiques sont facultatives : ce n'est que si vous les acceptez que nous chargeons Google Analytics 4, qui dépose ses propres témoins (_ga et _ga_*) et transfère des données d'utilisation agrégées à Google LLC, y compris vers des serveurs situés hors du Canada. Les statistiques restent désactivées jusqu'à votre acceptation, un refus ne vous prive d'aucune fonctionnalité, et vous pouvez retirer votre consentement à tout moment en effaçant les données de ce site dans votre navigateur. Nous n'utilisons aucun témoin publicitaire et ne faisons aucun suivi intersites." },
     { heading: "Sécurité", body: "Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos informations personnelles. Aucun mode de transmission sur Internet n'est sécurisé à 100 % et nous ne pouvons garantir une sécurité absolue." },
-    { heading: "Vos droits (LPRPDE et Loi 25)", body: `En vertu de la LPRPDE (Canada) et, pour les résidents du Québec, de la Loi sur la protection des renseignements personnels dans le secteur privé (Loi 25), vous avez le droit d'accéder à vos renseignements personnels détenus par ${ENTITY_FR}, de les corriger ou d'en demander la suppression, de retirer un consentement accordé, et de savoir si vos renseignements ont été communiqués hors du Québec. Contactez-nous à support@vesselwellness.example pour exercer ces droits.` },
-    { heading: "Contact", body: "Les questions relatives à cette politique peuvent être adressées à support@vesselwellness.example. Cette politique a été mise à jour en août 2026 et peut être modifiée sans préavis." },
+    { heading: "Vos droits (LPRPDE et Loi 25)", body: `En vertu de la LPRPDE (Canada) et, pour les résidents du Québec, de la Loi sur la protection des renseignements personnels dans le secteur privé (Loi 25), vous avez le droit d'accéder à vos renseignements personnels détenus par ${ENTITY_FR}, de les corriger ou d'en demander la suppression, de retirer un consentement accordé, et de savoir si vos renseignements ont été communiqués hors du Québec. Contactez-nous à ${BRAND.supportEmail} pour exercer ces droits.` },
+    { heading: "Contact", body: `Les questions relatives à cette politique peuvent être adressées à ${BRAND.supportEmail}. Cette politique a été mise à jour en août 2026 et peut être modifiée sans préavis.` },
   ],
   terms: [
     { heading: "Acceptation", body: "En accédant à ce site ou en passant une commande, vous acceptez d'être lié par ces conditions d'utilisation et toutes les lois applicables. Si vous n'acceptez pas, veuillez ne pas utiliser ce site." },
@@ -102,8 +104,8 @@ export const LEGAL_FR: LegalContent = {
   ],
   refund: [
     { heading: "Délai de retour", body: "Les articles non utilisés dans leur emballage d'origine peuvent être retournés dans les 30 jours suivant la livraison pour un remboursement ou un crédit en boutique. Les articles sur mesure et de vente finale sont exclus — vérifiez la fiche produit avant de commander." },
-    { heading: "Commandes endommagées ou incorrectes", body: "Si vous recevez un produit endommagé lors du transport ou sensiblement différent de ce qui a été commandé, contactez-nous à support@vesselwellness.example dans les 48 heures suivant la livraison avec des photos et votre numéro de commande. Nous évaluerons la situation et, à notre discrétion, offrirons un remplacement ou un crédit en boutique." },
+    { heading: "Commandes endommagées ou incorrectes", body: `Si vous recevez un produit endommagé lors du transport ou sensiblement différent de ce qui a été commandé, contactez-nous à ${BRAND.supportEmail} dans les 48 heures suivant la livraison avec des photos et votre numéro de commande. Nous évaluerons la situation et, à notre discrétion, offrirons un remplacement ou un crédit en boutique.` },
     { heading: "Colis perdus", body: `Si le suivi confirme qu'un colis a été perdu en transit, contactez-nous et nous mènerons une enquête auprès du transporteur. Un remplacement ou un crédit est accordé à la seule discrétion de ${ENTITY_FR} après la fin de l'enquête.` },
-    { heading: "Annulation de commande", body: "Les commandes peuvent être annulées dans les 2 heures suivant leur passage si elles n'ont pas encore été traitées. Contactez-nous immédiatement à support@vesselwellness.example. Une fois une commande en cours de traitement, elle ne peut être annulée." },
+    { heading: "Annulation de commande", body: `Les commandes peuvent être annulées dans les 2 heures suivant leur passage si elles n'ont pas encore été traitées. Contactez-nous immédiatement à ${BRAND.supportEmail}. Une fois une commande en cours de traitement, elle ne peut être annulée.` },
   ],
 };
