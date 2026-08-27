@@ -1,15 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 -112 320 320">
-  <!-- 320×320 square canvas centred on the LOAM lettermark -->
-  <rect x="8" y="-112" width="320" height="320" rx="68" fill="#000000"/>
-  <!-- LOAM paths from BrandLogo, stroke thickened for small-size legibility -->
-  <g stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- L -->
-    <path d="M 18 18 V 78 H 62"/>
-    <!-- O -->
-    <path d="M 102 18 H 150 V 78 H 102 Z"/>
-    <!-- A -->
-    <path d="M 186 78 V 18 H 234 V 78 M 186 50 H 234"/>
-    <!-- M -->
-    <path d="M 270 78 V 18 L 294 55 L 318 18 V 78"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <!-- Favicon / app icon. Replaces a leftover mark from the codebase this was
+       forked from (it literally spelled out that project's old name) with a
+       monogram actually drawn from the VESSEL wordmark's own "V" stroke
+       (see components/ui/BrandLogo.tsx) — same rounded-square treatment,
+       one glyph, legible down to 16px. The accent dot is a small nod to
+       "vessel" as in a container for liquid. -->
+  <rect width="160" height="160" rx="36" fill="#000000"/>
+  <path
+    d="M 44 44 L 80 116 L 116 44"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="16"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="80" cy="132" r="7" fill="#2997ff"/>
 </svg>
