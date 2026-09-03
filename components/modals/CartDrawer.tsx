@@ -5,6 +5,7 @@ import { useCart } from "../providers/CartProvider";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { GlassVial } from "@/components/ui/GlassVial";
 import { cn } from "@/lib/utils";
+import { products } from "@/lib/products";
 import { useEffect, useState } from "react";
 
 export function CartDrawer({ onCheckout }: { onCheckout: () => void }) {
@@ -150,6 +151,7 @@ export function CartDrawer({ onCheckout }: { onCheckout: () => void }) {
                           productName={item.name}
                           weight={20}
                           unit={item.unit}
+                          tag={products.find((pr) => pr.id === item.id)?.tag}
                         />
                       </div>
                     </div>

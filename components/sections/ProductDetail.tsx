@@ -140,7 +140,7 @@ export function ProductDetail({ product: initial }: { product: Product }) {
               className="w-[min(300px,72vw)]"
               onClick={(e) => e.stopPropagation()}
             >
-              <GlassVial productName={p.name} weight={20} unit={p.unit} />
+              <GlassVial productName={p.name} weight={20} unit={p.unit} tag={p.tag} />
             </motion.div>
             <button
               onClick={() => setZoomOpen(false)}
@@ -180,7 +180,7 @@ export function ProductDetail({ product: initial }: { product: Product }) {
                 onClick={() => setZoomOpen(true)}
               >
                 <div className="w-[180px] md:w-[210px] transition-transform duration-700 group-hover:scale-[1.04] group-hover:-translate-y-3">
-                  <GlassVial productName={p.name} weight={20} unit={p.unit} />
+                  <GlassVial productName={p.name} weight={20} unit={p.unit} tag={p.tag} />
                 </div>
                 <div
                   className="absolute bottom-4 right-4 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -361,7 +361,7 @@ export function ProductDetail({ product: initial }: { product: Product }) {
                       </div>
                       <div className="relative w-[80px] shrink-0 flex items-end justify-center pb-2">
                         <div className="w-[58px]">
-                          <GlassVial productName={rp.name} weight={20} unit={rp.unit} />
+                          <GlassVial productName={rp.name} weight={20} unit={rp.unit} tag={rp.tag} />
                         </div>
                       </div>
                     </Link>
