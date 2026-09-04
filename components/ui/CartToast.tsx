@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useCart } from "@/components/providers/CartProvider";
 
 export function CartToast() {
@@ -13,7 +14,14 @@ export function CartToast() {
     >
       <div
         onClick={() => { setCartOpen(true); clearLastAdded(); }}
-        className="flex items-center gap-3 px-4 py-3 rounded-[14px] shadow-2xl transition-all duration-300 pointer-events-auto cursor-pointer"
+        // pointer-events tracks lastAdded, not just opacity — this box sits
+        // right over the nav's language/theme/cart buttons (fixed, higher
+        // z-index than the nav), so leaving it interactive while "hidden"
+        // silently swallowed clicks meant for those buttons.
+        className={cn(
+          "flex items-center gap-3 px-4 py-3 rounded-[14px] shadow-2xl transition-all duration-300 cursor-pointer",
+          lastAdded ? "pointer-events-auto" : "pointer-events-none"
+        )}
         style={{
           backgroundColor: "var(--surface)",
           border: "1px solid var(--border)",
