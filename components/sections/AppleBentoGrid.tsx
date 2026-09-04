@@ -258,8 +258,8 @@ export function AppleBentoGrid() {
                     </div>
 
                     {/* Right — Vial */}
-                    <div className="relative w-[92px] md:w-[108px] flex-shrink-0">
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[68px] md:w-[82px] pointer-events-none group-hover:scale-[1.02] transition-transform duration-700">
+                    <div className="relative w-[104px] md:w-[120px] flex-shrink-0">
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[94px] md:w-[110px] pointer-events-none group-hover:scale-[1.02] transition-transform duration-700">
                         <GlassVial productName={family.name} weight={20} unit={displayVariant.unit} tag={family.tag} />
                       </div>
                     </div>

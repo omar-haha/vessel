@@ -143,10 +143,10 @@ export function CartDrawer({ onCheckout }: { onCheckout: () => void }) {
                   <div className="flex items-stretch gap-0">
                     {/* Vial thumbnail */}
                     <div
-                      className="w-[100px] shrink-0 flex items-end justify-center pt-6 pb-0 overflow-hidden"
+                      className="w-[106px] shrink-0 flex items-end justify-center pt-6 pb-0 overflow-hidden"
                       style={{ backgroundColor: "var(--bg-alt)" }}
                     >
-                      <div className="w-[72px]">
+                      <div className="w-[88px]">
                         <GlassVial
                           productName={item.name}
                           weight={20}

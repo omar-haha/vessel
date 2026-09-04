@@ -179,7 +179,7 @@ export function ProductDetail({ product: initial }: { product: Product }) {
                 style={{ backgroundColor: "var(--bg-alt)", paddingTop: "56px", minHeight: "480px" }}
                 onClick={() => setZoomOpen(true)}
               >
-                <div className="w-[180px] md:w-[210px] transition-transform duration-700 group-hover:scale-[1.04] group-hover:-translate-y-3">
+                <div className="w-[240px] md:w-[280px] transition-transform duration-700 group-hover:scale-[1.04] group-hover:-translate-y-3">
                   <GlassVial productName={p.name} weight={20} unit={p.unit} tag={p.tag} />
                 </div>
                 <div
@@ -359,8 +359,8 @@ export function ProductDetail({ product: initial }: { product: Product }) {
                         <p className="text-[13px] text-secondary mb-auto">{rp.unit}</p>
                         <p className="text-[15px] font-medium text-primary mt-3">${rp.price.toFixed(2)}</p>
                       </div>
-                      <div className="relative w-[80px] shrink-0 flex items-end justify-center pb-2">
-                        <div className="w-[58px]">
+                      <div className="relative w-[94px] shrink-0 flex items-end justify-center pb-2">
+                        <div className="w-[80px]">
                           <GlassVial productName={rp.name} weight={20} unit={rp.unit} tag={rp.tag} />
                         </div>
                       </div>

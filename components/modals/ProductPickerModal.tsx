@@ -69,7 +69,7 @@ function PickerContent({ family, onClose }: { family: ProductFamily; onClose: ()
           className="sm:w-[200px] shrink-0 flex items-center justify-center px-7 sm:pl-7 sm:pr-0 pb-0 pt-4"
           style={{ minHeight: "210px" }}
         >
-          <div className="w-[110px]">
+          <div className="w-[142px]">
             <GlassVial productName={family.name} weight={20} unit={selected.unit} tag={family.tag} />
           </div>
         </div>
